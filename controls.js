@@ -1,4 +1,4 @@
-class Controls{
+export class Controls{
     constructor(){
         this.forward = false;
         this.left = false;
@@ -24,7 +24,6 @@ class Controls{
                     this.reverse = true;
                     break;
             }
-            console.log(this);
         });
 
         document.addEventListener("keyup", (event) => {
@@ -42,7 +41,6 @@ class Controls{
                     this.reverse = false;
                     break;
             }
-            console.table(this);
         });
     }
 }
