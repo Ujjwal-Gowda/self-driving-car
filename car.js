@@ -1,4 +1,5 @@
 import { Controls } from "./controls.js";
+import Sensor from "./sensor.js";
 export class Car{
     constructor(x,y,width,height){
         this.x = x;
@@ -12,10 +13,12 @@ export class Car{
         this.friction=0.05;
         this.angle=0;
 
+        this.sensor=new Sensor(this);
         this.controls=new Controls();
     }
-    update(){
+    update(roadBorders){
         this.#Move();
+        this.sensor.update(roadBorders);
     }
     #Move(){
                 if(this.controls.forward){
@@ -71,5 +74,6 @@ export class Car{
         // ctx.fillStyle = "blue";
         ctx.fill();
         ctx.restore();
+        this.sensor.draw(ctx);
     }
 }
