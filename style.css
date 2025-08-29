@@ -2,7 +2,25 @@ body{
     margin: 0;
     background: gray;
     overflow: hidden;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#buttons{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    font-size: 20px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    background: white;
+    cursor: pointer;
+}
+button:hover{
+    background: lightblue;
 }
 #carCanvas{
     background: lightgrey;
