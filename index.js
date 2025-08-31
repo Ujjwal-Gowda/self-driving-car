@@ -1,6 +1,7 @@
 import { Road } from "./Road.js";
 import { Car } from "./car.js";
 import { Visualizer } from "./visualizer.js";
+import { NeuralNetwork } from "./network.js";
 
 
 const carCanvas=document.getElementById("carCanvas");
@@ -16,14 +17,19 @@ const cars=generateCars(N)
 
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
-        bestCar.brain=JSON.parse(
+    for(let i=0;i<cars.length;i++){
+            cars[i].brain=JSON.parse(
             localStorage.getItem("bestBrain")
-        );
+        )
+        if(i!=0){
+            NeuralNetwork.mutate(cars[i].brain,0.3);
+        }
+    }
 }
 const traffic=[
     new Car(road.getLaneCenter(1),200,30,50,"Dummy",2),
-    new Car(road.getLaneCenter(0),0,30,50,"Dummy",2),
-    new Car(road.getLaneCenter(2),0,30,50,"Dummy",2)
+    new Car(road.getLaneCenter(0),-300,30,50,"Dummy",2),
+    new Car(road.getLaneCenter(2),-400,30,50,"Dummy",2)
 ];
 
 animate();
